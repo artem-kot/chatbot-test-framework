@@ -1,0 +1,27 @@
+image: maven:latest
+
+cache:
+  paths:
+    - .m2/repository
+    - target/
+
+stages:
+  - test
+  - report
+
+test:
+  stage: test
+  script:
+    - mvn clean test
+
+report:
+  stage: report
+  script:
+    - mvn io.qameta.allure:allure-maven:report
+    - echo 'Report is available here:' \
+      'https://l1r1.gitlab.io/-/test-framework/-/jobs/'${CI_JOB_ID}'/artifacts/target/site/allure-maven-plugin/index.html'
+  artifacts:
+    when: always
+    paths:
+      - target/site/allure-maven-plugin
+    expire_in: 1 week

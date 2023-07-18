@@ -1,0 +1,27 @@
+testCaseName: "AC002. Sample scenario used for testing"
+testCaseDescription: "A simple out of the frame conversation with Lara"
+
+steps:
+  - stepName: "Greeting"
+    userInput: "Guten Tag."
+    # Guten Morgen, Besucher::in.
+    # Was möchten Sie tun? Sie können eine Rechnung erzeugen oder ein neues Angebot erstellen.
+    responseKeywords:
+      - ""
+      - ""
+
+  - stepName: "Small talk about the weather"
+    userInput: "Ich würde gerne wissen, wie das Wetter heute in München ist."
+    # Gut, beginnen wir eine neue Rechnung.
+    # Auf wann soll sie datiert werden?
+    responseKeywords:
+      - ""
+      - ""
+
+  - stepName: "Asking Lara about self-driving cars"
+    userInput: "Was halten Sie von selbstfahrenden Autos?"
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - ""
+      - ""

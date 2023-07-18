@@ -1,0 +1,193 @@
+testCaseName: "AC001. SunnyDay E2E Invoice request"
+testCaseDescription: "A simple E2E dialogue flow to order an invoice."
+
+steps:
+  - stepName: "Greeting"
+    userInput: "Guten Tag"
+    # Guten Morgen, Besucher::in.
+    # Was möchten Sie tun? Sie können eine Rechnung erzeugen oder ein neues Angebot erstellen.
+    responseKeywords:
+      - "Rechnung"
+      - "Angebot"
+
+  - stepName: "Requesting Invoice"
+    userInput: "Ich möchte eine Rechnung erstellen."
+    # Gut, beginnen wir eine neue Rechnung.
+    # Auf wann soll sie datiert werden?
+    responseKeywords:
+      - "Rechnung"
+      - "datiert"
+
+  - stepName: "Date provisioning"
+    userInput: "Datum von heute."
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming date"
+    userInput: "Ja"
+    # Wie heißt der Empfänger? Nennen Sie den Namen oder die Firma, bitte.
+    responseKeywords:
+      - "Empfänger"
+      - "Namen"
+      - "Firma"
+
+  - stepName: "Company name provisioning"
+    userInput: "Paul Panther"
+    # Ich habe folgendes verstanden: Paul Panther .
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming company name"
+    userInput: "Ja."
+    # ask.invoice.fonnumber []
+    responseKeywords:
+      - "fonnumber"
+
+  - stepName: "Providing phone number"
+    userInput: "+4912345678901"
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming phone number"
+    userInput: "Ja."
+    # Wie lautet die Adresse?
+    responseKeywords:
+      - "Adresse"
+
+  - stepName: "Providing company address"
+    userInput: "Buttmannstraße 1A 13357 Berlin Deutschland"
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming company address"
+    userInput: "Ja."
+    # Welche Position möchten Sie in Rechnung stellen?
+    # Nennen Sie Anzahl, Einheit, Bezeichnung, Nettopreis mit Währung und den Mehrwertsteuersatz
+    responseKeywords:
+      - "Position"
+      - "Rechnung"
+      - "Anzahl"
+      - "Einheit"
+      - "Bezeichnung"
+      - "Nettopreis"
+      - "Währung"
+      - "Mehrwertsteuersatz"
+
+  - stepName: "Providing position of the invoice"
+    userInput: "0,5 Stunden für Beratung 45 Euro mit 19 Prozent Mehrwertsteuer"
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming position"
+    userInput: "Ja."
+    #  Möchten sie eine weitere Rechnungsposition hinzufügen?
+    responseKeywords:
+      - "Rechnungsposition"
+      - "hinzufügen"
+
+  - stepName: "Adding another position"
+    userInput: "Ja."
+    # Welche Position möchten Sie in Rechnung stellen?
+    # Nennen Sie Anzahl, Einheit, Bezeichnung, Nettopreis mit Währung und den Mehrwertsteuersatz
+    responseKeywords:
+      - "Position"
+      - "Rechnung"
+      - "Anzahl"
+      - "Einheit"
+      - "Bezeichnung"
+      - "Nettopreis"
+      - "Währung"
+      - "Mehrwertsteuersatz"
+
+  - stepName: "Providing position of the invoice"
+    userInput: "2.4 t Schüttgut Klasse A zum Preis von 286,50 Euro mit 19 Prozent Märchensteuer"
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming position"
+    userInput: "Ja."
+    #  Möchten sie eine weitere Rechnungsposition hinzufügen?
+    responseKeywords:
+      - "Rechnungsposition"
+      - "hinzufügen"
+
+  - stepName: "Completing position provisioning"
+    userInput: "Nein."
+    # Wie lautet Ihrer Bankverbindung? Ich brauche: Kontoinhaber, Iban, BIC und Bankname, bitte
+    responseKeywords:
+      - "Bankverbindung"
+      - "Kontoinhaber"
+      - "Iban"
+      - "BIC"
+      - "Bankname"
+
+  - stepName: "Providing bank info"
+    userInput: "Jason Bourne, DE98500105174299621886, INGDDEFFXXX, ING Bank"
+    # asksinglefield.Text.bankname []
+    responseKeywords:
+      - "asksinglefield"
+      - "bankname []"
+
+  - stepName: "Providing bank name"
+    userInput: "ING Bank"
+    # asksinglefield.Text.iban []
+    responseKeywords:
+      - "asksinglefield"
+      - "iban"
+
+  - stepName: "Providing IBAN"
+    userInput: "DE98500105174299621886"
+    # asksinglefield.Text.bic []
+    responseKeywords:
+      - "asksinglefield"
+      - "bic"
+
+  - stepName: "Providing bank BIC"
+    userInput: "INGDDEFFXXX"
+    # asksinglefield.Text.holder []
+    responseKeywords:
+      - "asksinglefield"
+      - "holder"
+
+  - stepName: "Providing account holder"
+    userInput: "Jason Bourne"
+    # Ich habe folgendes verstanden...
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming bank data input"
+    userInput: "Ja"
+    # Was möchten Sie als Zusammenfassung schreiben?
+    responseKeywords:
+      - "Zusammenfassung"
+      - "schreiben"
+
+  - stepName: "Providing summary phrase"
+    userInput: "Vielen Dank!"
+    # Ich habe folgendes verstanden: ...
+    # Ist das korrekt?
+    responseKeywords:
+      - "Ich habe folgendes verstanden"
+      - "korrekt?"
+
+  - stepName: "Confirming summary phrase"
+    userInput: "Ja."
+    #  Das wars. Das fertige Dokument können Sie hier herunterladen: ...
+    responseKeywords:
+      - "fertig"
+      - "herunterladen"

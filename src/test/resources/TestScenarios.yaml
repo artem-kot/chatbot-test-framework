@@ -1,0 +1,3 @@
+advancedCasesPaths:
+  - "src/test/resources/advanced-cases/AC001.yaml"
+  - "src/test/resources/advanced-cases/AC002.yaml"
